@@ -1,28 +1,19 @@
-#!/usr/bin/env python3
-import os
+import yaml
+from aws_cdk import App, Stack
+from my_java_tomcat_cdk.network_stack import NetworkStack
+from my_java_tomcat_cdk.app_stack import MyJavaTomcatStack
 
-import aws_cdk as cdk
+# Load parameters.yaml
+with open("parameters.yaml", 'r') as f:
+    config = yaml.safe_load(f)
 
-from my_java_tomcat_cdk.my_java_tomcat_cdk_stack import MyJavaTomcatCdkStack
+app = App()
 
-
-app = cdk.App()
-MyJavaTomcatCdkStack(app, "MyJavaTomcatCdkStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
-
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
-
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
-
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+# Khởi tạo các stack cho từng môi trường
+for env_name in ["dev", "test", "prod"]:
+    params = config[env_name]
+    
+    network_stack = NetworkStack(app, f"NetworkStack-{env_name}", params=params)
+    MyJavaTomcatStack(app, f"MyJavaTomcatStack-{env_name}", network_stack=network_stack, params=params)
 
 app.synth()

@@ -1,0 +1,20 @@
+dev:
+  instance_type: "t3.micro"
+  min_capacity: 1
+  max_capacity: 2
+  desired_capacity: 1
+  alb_security_group_name: "sg-dev"
+
+test:
+  instance_type: "t3.small"
+  min_capacity: 2
+  max_capacity: 4
+  desired_capacity: 2
+  alb_security_group_name: "sg-test"
+
+prod:
+  instance_type: "t3.medium"
+  min_capacity: 3
+  max_capacity: 6
+  desired_capacity: 3
+  alb_security_group_name: "sg-prod"
