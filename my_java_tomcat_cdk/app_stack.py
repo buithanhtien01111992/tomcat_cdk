@@ -2,10 +2,10 @@ from aws_cdk import Stack, CfnOutput
 from aws_cdk import aws_ec2 as ec2
 from aws_cdk import aws_autoscaling as autoscaling
 from aws_cdk import aws_elasticloadbalancingv2 as elbv2
-from aws_cdk import core
+from constructs import Construct
 
 class MyJavaTomcatStack(Stack):
-    def __init__(self, scope: core.Construct, id: str, network_stack: 'NetworkStack', params: dict, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, network_stack: 'NetworkStack', params: dict, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         # Cài đặt UserData để tự động cài Tomcat khi EC2 khởi động

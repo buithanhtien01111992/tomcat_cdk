@@ -4,6 +4,11 @@ dev:
   max_capacity: 2
   desired_capacity: 1
   alb_security_group_name: "sg-dev"
+  github_owner: "buithanhtien01111992e"
+  github_repo: "tomcat_cdk"
+  github_secret_name: "github-token"
+  github_branch: "main"
+  deployment_group: "MyDeploymentGroup"
 
 test:
   instance_type: "t3.small"
@@ -11,6 +16,11 @@ test:
   max_capacity: 4
   desired_capacity: 2
   alb_security_group_name: "sg-test"
+  github_owner: "buithanhtien01111992"
+  github_repo: "tomcat_cdk"
+  github_secret_name: "github-token"
+  github_branch: "main"
+  deployment_group: "MyDeploymentGroup"
 
 prod:
   instance_type: "t3.medium"
@@ -18,3 +28,8 @@ prod:
   max_capacity: 6
   desired_capacity: 3
   alb_security_group_name: "sg-prod"
+  github_owner: "buithanhtien01111992"
+  github_repo: "tomcat_cdk"
+  github_secret_name: "github-token"
+  github_branch: "main"
+  deployment_group: "MyDeploymentGroup"

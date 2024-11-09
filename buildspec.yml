@@ -4,16 +4,10 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-    commands:
-      - echo "Installing dependencies..."
-      - cd simple-tomcat-app
-      - mvn dependency:resolve
-
   build:
     commands:
-      - echo "Building WAR file..."
-      - mvn package
+      - mvn clean install
 
 artifacts:
   files:
-    - simple-tomcat-app/target/*.war
+    - target/*.war

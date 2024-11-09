@@ -1,9 +1,9 @@
 from aws_cdk import Stack
 from aws_cdk import aws_ec2 as ec2
-from aws_cdk import App
+from constructs import Construct
 
 class NetworkStack(Stack):
-    def __init__(self, scope: App, id: str, params: dict, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, params: dict, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         # Tạo VPC
